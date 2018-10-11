@@ -44,16 +44,11 @@ def filename_for_class(class_index: int) -> str:
 def store_table_in_dropbox(dbx, table: str, filename: str) -> None:
     dbx.files_upload(table.encode(), '/' + filename)
 
-def store_table_locally(table: str, filename: str) -> None:
-    with open(filename, 'w') as f:
-        f.write(table)
-
 last_stored_day = None
 def store_tables(tables: List[str]) -> None:
     dbx = dropbox.Dropbox(environ['dropbox_access_token'])
     for i, table in enumerate(tables):
         filename = filename_for_class(i+1)
-        store_table_locally(table, filename)
         store_table_in_dropbox(dbx, table, filename)
     last_stored_day = datetime.today().day
 
