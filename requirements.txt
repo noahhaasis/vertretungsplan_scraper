@@ -1,2 +1,2 @@
-requests
-dropbox
+dropbox==9.1.0
+requests==2.18.4
