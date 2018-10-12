@@ -54,7 +54,7 @@ def filename_for_class(class_index: int) -> str:
     return '{}_{}__{}.html'.format(current_year(), current_week(), class_index)
 
 def filename_for_week_summary() -> str:
-    return '{}_{}__summary'.format(current_year(), current_week())
+    return '{}_{}__summary.html'.format(current_year(), current_week())
 
 def store_table_in_dropbox(dbx, table: str, filename: str) -> None:
     dbx.files_upload(table.encode(), '/' + filename)
@@ -69,7 +69,7 @@ def store_tables(tables: List[str]) -> None:
 
 def store_week_summary(summary: str):
     dbx = dropbox.Dropbox(environ['dropbox_access_token'])
-    dbx.files_upload(summary.encode, '/' + filename_for_week_summary)
+    dbx.files_upload(summary.encode(), '/' + filename_for_week_summary())
 
 def already_stored_today() -> bool:
     return last_stored_day is not None and last_stored_day == datetime.today().day
