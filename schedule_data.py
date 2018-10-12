@@ -1,5 +1,6 @@
 import dropbox
-import requests from datetime import datetime
+import requests
+from datetime import datetime
 from itertools import count
 from os import environ
 from time import sleep
