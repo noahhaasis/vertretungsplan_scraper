@@ -83,7 +83,7 @@ def main() -> None:
             tables = fetch_all_tables()
             store_tables(tables)
 
-            summary = fetch_week_summary(summary)
+            summary = fetch_week_summary()
             store_week_summary(summary)
             sleep(DAY * 4)
 
